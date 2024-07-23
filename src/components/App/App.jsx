@@ -22,11 +22,11 @@ export default function App() {
   return (
     <div className={css.contPhonebook}>
       <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {loading && <Loader />}
-      {error && <ErrorMessage />}
-      {!error && <ContactList />}
+      {/* <ContactForm /> */}
+      {/* <SearchBox /> */}
+      {/* {loading && <Loader />} */}
+      {/* {error && <ErrorMessage />} */}
+      {/* {!error && <ContactList />} */}
     </div>
   );
 }
