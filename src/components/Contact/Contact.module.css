@@ -1,0 +1,17 @@
+.contContact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 280px;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.iconUser {
+    margin-right: 5px;
+}
+
+.iconPhone {
+    margin-right: 5px;
+}
