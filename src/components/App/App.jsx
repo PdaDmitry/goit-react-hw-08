@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../../redux/contactsOps';
 import { selectLoading, selectError } from '../../redux/selectors';
+import { RegistrationForm } from '../RegistrationForm/RegistrationForm';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ export default function App() {
   return (
     <div className={css.contPhonebook}>
       <h1>Phonebook</h1>
+      {/* <RegistrationForm /> */}
       {/* <ContactForm /> */}
       {/* <SearchBox /> */}
       {/* {loading && <Loader />} */}

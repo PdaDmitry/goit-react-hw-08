@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { register, logIn, logOut, refreshUser } from './operations';
 
 const handlFulfilled = (state, action) => {
   state.user = action.payload.user;
