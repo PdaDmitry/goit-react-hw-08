@@ -17,13 +17,13 @@ export default function App() {
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    // dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
     <div className={css.contPhonebook}>
       <h1>Phonebook</h1>
-      {/* <RegistrationForm /> */}
+      <RegistrationForm />
       {/* <ContactForm /> */}
       {/* <SearchBox /> */}
       {/* {loading && <Loader />} */}
