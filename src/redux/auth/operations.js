@@ -13,11 +13,11 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
+//body: { name, email, password }
 export const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
   try {
     const response = await axios.post('/users/signup', credentials);
     // After successful registration, add the token to the HTTP header
-    //body: { name, email, password }
     setAuthHeader(response.data.token); //add token via function setAuthHeader()
     return response.data;
   } catch (error) {
