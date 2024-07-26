@@ -7,9 +7,10 @@ import css from './App.module.css';
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from '../../redux/contactsOps';
-import { selectLoading, selectError } from '../../redux/selectors';
+import { fetchContacts } from '../../redux/contacts/operations';
+import { selectLoading, selectError } from '../../redux/contacts/selectors';
 import { RegistrationForm } from '../RegistrationForm/RegistrationForm';
+import { LoginForm } from '../LoginForm/LoginForm';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -17,18 +18,20 @@ export default function App() {
   const error = useSelector(selectError);
 
   useEffect(() => {
-    // dispatch(fetchContacts());
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
     <div className={css.contPhonebook}>
       <h1>Phonebook</h1>
-      <RegistrationForm />
-      {/* <ContactForm /> */}
-      {/* <SearchBox /> */}
-      {/* {loading && <Loader />} */}
-      {/* {error && <ErrorMessage />} */}
-      {/* {!error && <ContactList />} */}
+      {/* <RegistrationForm /> */}
+      {/* <LoginForm /> */}
+
+      <ContactForm />
+      <SearchBox />
+      {loading && <Loader />}
+      {error && <ErrorMessage />}
+      {!error && <ContactList />}
     </div>
   );
 }
