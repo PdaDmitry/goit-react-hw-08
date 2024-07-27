@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'https://connections-api.goit.global/';
+axios.defaults.baseURL = 'https://connections-api.goit.global/';
 
 // Utility to add JSON Web Token
 const setAuthHeader = token => {
@@ -51,7 +51,7 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
   const state = thunkAPI.getState(); // Reading the token from the state via getState()
   const persistedToken = state.auth.token;
 
-  if (persistedToken === null) {
+  if (!persistedToken) {
     // If there is no token, exit without performing any request
     return thunkAPI.rejectWithValue('Unable to fetch user');
   }
