@@ -3,6 +3,7 @@ import { login } from '../../redux/auth/operations';
 import { useId } from 'react';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
 import css from './LoginForm.module.css';
 
 export const LoginForm = () => {
@@ -16,7 +17,14 @@ export const LoginForm = () => {
   };
 
   const handleSubmit = (values, actions) => {
-    dispatch(login(values));
+    dispatch(login(values))
+      .unwrap()
+      .then(() => {
+        toast.success('login success');
+      })
+      .catch(() => {
+        toast.error('login error');
+      });
     actions.resetForm();
   };
 

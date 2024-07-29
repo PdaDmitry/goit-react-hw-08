@@ -10,6 +10,8 @@ import { ContactPage } from '../../pages/ContactPage/ContactPage';
 import { RestrictedRoute } from '../RestrictedRoute';
 import { PrivateRoute } from '../PrivateRoute';
 import { refreshUser } from '../../redux/auth/operations';
+import { Toaster } from 'react-hot-toast';
+
 import css from './App.module.css';
 
 export default function App() {
@@ -41,6 +43,7 @@ export default function App() {
           />
         </Routes>
       </Layout>
+      <Toaster />
     </div>
   );
 }
