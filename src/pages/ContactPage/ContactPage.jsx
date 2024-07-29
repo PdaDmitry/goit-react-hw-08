@@ -7,6 +7,8 @@ import DocumentTitle from '../../components/DocumentTitle';
 import ContactForm from '../../components/ContactForm/ContactForm';
 import ContactList from '../../components/ContactList/ContactList';
 import SearchBox from '../../components/SearchBox/SearchBox';
+import { ErrorMessage } from 'formik';
+import css from './ContactPage.module.css';
 
 export const ContactPage = () => {
   const dispatch = useDispatch();
@@ -18,7 +20,7 @@ export const ContactPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={css.contContactPage}>
       <DocumentTitle>Your contacts</DocumentTitle>
       <ContactForm />
       <SearchBox />

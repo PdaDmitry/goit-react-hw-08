@@ -4,7 +4,7 @@ import css from './Layout.module.css';
 
 export const Layout = ({ children }) => {
   return (
-    <div>
+    <div className={css.background}>
       <AppBar />
       <Suspense fallback={null}>{children}</Suspense>
     </div>

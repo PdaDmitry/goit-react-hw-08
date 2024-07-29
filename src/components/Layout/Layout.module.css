@@ -1,0 +1,5 @@
+.background {
+    position: relative;
+    padding: 20px;
+    z-index: 1;
+}
