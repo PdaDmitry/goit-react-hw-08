@@ -21,7 +21,7 @@ export default function UpdateContactForm({ contact, closeModal }) {
     dispatch(updateContact({ id: contact.id, ...values }))
       .unwrap()
       .then(() => {
-        toast.success(`Contact ${values.name} successfully updated!`);
+        toast.success(`Contact '${values.name}' successfully updated!`);
         actions.resetForm();
         closeModal();
       })
@@ -64,7 +64,7 @@ export default function UpdateContactForm({ contact, closeModal }) {
           <ErrorMessage className={css.errorText} name="number" component="span" />
         </div>
 
-        <button className={css.btn} type="submit">
+        <button className={css.updateBtn} type="submit">
           Update contact
         </button>
 
