@@ -7,22 +7,40 @@ import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts/operations';
 import { useState } from 'react';
 import Modal from 'react-modal';
-// import ModalWindow from '../ModalWindow/ModalWindow';
+import UpdateContactForm from '../UpdateContactForm/UpdateContactForm';
 
 Modal.setAppElement('#root');
 
 export default function Contact({ data: { id, name, number } }) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [selectedContact, setSelectedContact] = useState(null);
 
-  const openModal = () => setModalIsOpen(true);
-  const closeModal = () => setModalIsOpen(false);
+  //function to open the "Update Contact" modal window
+  const openUpdateModal = contact => {
+    setSelectedContact(contact);
+    setIsUpdate(true);
+    setModalIsOpen(true);
+  };
+
+  //function to open the "Delete Contact" modal window
+  const openDeleteModal = () => {
+    setIsUpdate(false);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setSelectedContact(null);
+    setIsUpdate(false);
+  };
 
   const handleDelete = () => {
     dispatch(deleteContact(id))
       .unwrap()
       .then(() => {
-        toast.success(`Contact ${name} deleted successfully!`);
+        toast.success(`Contact '${name}' deleted successfully!`);
         closeModal();
       })
       .catch(() => {
@@ -44,10 +62,15 @@ export default function Contact({ data: { id, name, number } }) {
         </p>
       </div>
       {/* if you need to pass several arguments to deleteContact(id), then we pass deleteContact({id: item.id, value: 5}) as an object */}
-      <button className={css.btn} onClick={openModal}>
-        {/* When you click on the "Delete" button, a modal window opens //onClick={openModal} */}
-        Delete
-      </button>
+      <div className={css.contactButtons}>
+        <button className={css.btn} onClick={() => openUpdateModal({ id, name, number })}>
+          Update
+        </button>
+        <button className={css.btn} onClick={openDeleteModal}>
+          {/* When you click on the "Delete" button, a modal window opens //onClick={openDeleteModal} */}
+          Delete
+        </button>
+      </div>
 
       <Modal
         isOpen={modalIsOpen}
@@ -68,16 +91,22 @@ export default function Contact({ data: { id, name, number } }) {
           },
         }}
       >
-        <h2>Are you sure you want to delete contact "{name}"?</h2>
-        <div className={css.modalButtons}>
-          <button onClick={handleDelete} className={css.btnModal}>
-            {/* When you click on the "Delete" button, the "handleDelete" function is launched */}
-            Delete
-          </button>
-          <button onClick={closeModal} className={css.btnModal}>
-            Cancel
-          </button>
-        </div>
+        {isUpdate ? (
+          <UpdateContactForm contact={selectedContact} closeModal={closeModal} />
+        ) : (
+          <>
+            <h2>Are you sure you want to delete contact `{name}`?</h2>
+            <div className={css.modalButtons}>
+              <button onClick={handleDelete} className={css.btnModal}>
+                {/* When you click on the "Delete" button, the "handleDelete" function is launched */}
+                Delete
+              </button>
+              <button onClick={closeModal} className={css.btnModal}>
+                Cancel
+              </button>
+            </div>
+          </>
+        )}
       </Modal>
     </div>
   );

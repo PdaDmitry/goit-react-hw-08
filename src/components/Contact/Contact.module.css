@@ -17,8 +17,16 @@
   margin-right: 5px;
 }
 
+.contactButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 .btn {
+  display: block;
   cursor: pointer;
+  /* align-items: center; */
 }
 
 .btn:hover {

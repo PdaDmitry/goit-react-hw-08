@@ -21,6 +21,7 @@ export const register = createAsyncThunk('auth/register', async (credentials, th
     setAuthHeader(response.data.token); //add token via function setAuthHeader()
     return response.data;
   } catch (error) {
+    //  toast.error('Oops! Something went wrong. Please try again');
     return thunkAPI.rejectWithValue(error.message);
   }
 });
