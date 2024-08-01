@@ -10,7 +10,7 @@ import SearchBox from '../../components/SearchBox/SearchBox';
 import { ErrorMessage } from 'formik';
 import css from './ContactPage.module.css';
 
-export const ContactPage = () => {
+export default function ContactPage() {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
@@ -29,4 +29,4 @@ export const ContactPage = () => {
       {!error && <ContactList />}
     </div>
   );
-};
+}

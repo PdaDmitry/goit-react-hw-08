@@ -2,7 +2,7 @@ import DocumentTitle from '../../components/DocumentTitle';
 import { GiRotaryPhone } from 'react-icons/gi';
 import css from './HomePage.module.css';
 
-export const HomePage = () => {
+export default function HomePage() {
   return (
     <>
       <DocumentTitle>Home</DocumentTitle>
@@ -15,4 +15,4 @@ export const HomePage = () => {
       </div>
     </>
   );
-};
+}
